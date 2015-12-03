@@ -110,9 +110,16 @@ extension RyCooder {
         }
 
         let fileEnumeration: () -> Bool = {
-            guard let fileURL = directoryEnumerator.nextObject() as? NSURL where fileURL.musicFile,
-                  let fileName = fileURL.lastPathComponent else {
+            guard let fileURL = directoryEnumerator.nextObject() as? NSURL else {
                 return false
+            }
+
+            guard fileURL.musicFile else {
+                return true
+            }
+
+            guard let fileName = fileURL.lastPathComponent else {
+                return true 
             }
 
             let fullURL = dirURL.URLByAppendingPathComponent(fileName) 
