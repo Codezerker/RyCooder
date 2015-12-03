@@ -19,7 +19,77 @@ struct RyCooder {
     }
 
     func start() {
-        print(__FUNCTION__)
+        handleInput()
+        NSNotificationCenter.defaultCenter().addObserverForName(NSFileHandleDataAvailableNotification, 
+                                             object: nil, 
+                                             queue: NSOperationQueue.mainQueue()) { _ in
+                                                 self.handleInput()                           
+                                             }
+        runLoop.run()
+    }
+
+}
+
+extension RyCooder {
+
+    private func handleInput() {
+        guard let inputString = NSString(data: stdinHandle.availableData, encoding: NSUTF8StringEncoding) else {
+            return
+        }
+
+        let input = inputString.stringByReplacingOccurrencesOfString("\n", withString:"")
+
+        if let inputNumber = Int(input) {
+            if inputNumber > 0 && inputNumber <= songs.count {
+                jumpToSongAtIndex(inputNumber - 1)
+                player.play()
+            }
+
+            return
+        } else {
+            switch input {
+            case "start":
+                logStart()
+                player.play()
+            case "n", "next":
+                player.advanceToNextItem()
+                player.play()
+            case "p", "previous":
+                jumpToPreviousSong()
+                player.play()
+            default:
+                print("Unrecognized command \"\(input)\" 😦 .")
+            }
+
+            stdinHandle.waitForDataInBackgroundAndNotify()
+            logInputTips()
+        }
+    }
+
+    private func jumpToSongAtIndex(index: Int) {
+        player.removeAllItems()
+
+        for song in songs {
+            song.seekToTime(kCMTimeZero)
+            player.insertItem(song, afterItem: nil)
+        }
+
+        for _ in 0..<index {
+            player.advanceToNextItem()
+        }
+    }
+
+    private func jumpToPreviousSong() {
+        print("WIP")    
+    }
+
+    private func logStart() {
+        print("\n=====> 🎵  RyCooder has taken the stage...")
+    }
+
+    private func logInputTips() {
+        print("\nType \"(n)ext\" or \"(p)revious\" to change song.")
+        print("Type index number to play that song.")
     }
 
 }
