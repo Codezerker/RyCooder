@@ -33,6 +33,11 @@ struct RyCooder {
 extension RyCooder {
 
     private func handleInput() {
+        defer {
+            stdinHandle.waitForDataInBackgroundAndNotify()
+            logInputTips()
+        }
+
         guard let inputString = NSString(data: stdinHandle.availableData, encoding: NSUTF8StringEncoding) else {
             return
         }
@@ -60,9 +65,6 @@ extension RyCooder {
             default:
                 print("Unrecognized command \"\(input)\" 😦 .")
             }
-
-            stdinHandle.waitForDataInBackgroundAndNotify()
-            logInputTips()
         }
     }
 
@@ -80,7 +82,9 @@ extension RyCooder {
     }
 
     private func jumpToPreviousSong() {
-        print("WIP")    
+        print("")
+        print("Cool Guys Don't Look Back At 💥 Explosions💥 ")    
+        print("Jump to previous song has not been implemented yet.")
     }
 
     private func logStart() {
