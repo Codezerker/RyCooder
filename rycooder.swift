@@ -118,12 +118,7 @@ extension RyCooder {
                 return true
             }
 
-            guard let fileName = fileURL.lastPathComponent else {
-                return true 
-            }
-
-            let fullURL = dirURL.URLByAppendingPathComponent(fileName) 
-            result.append(fullURL)
+            result.append(fileURL)
             return true
         }
 
