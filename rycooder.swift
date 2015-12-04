@@ -127,7 +127,6 @@ extension RyCooder {
         return result
     }
 
-
     private func printMusicFiles(musicFiles: [NSURL]) {
         print("Music added to player queue:")
         for (index, musicURL) in musicFiles.enumerate() {
