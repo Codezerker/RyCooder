@@ -27,6 +27,22 @@ class RyCooder {
                                              queue: NSOperationQueue.mainQueue()) { _ in
                                                  self.handleInput()                           
                                              }
+
+        NSNotificationCenter.defaultCenter().addObserverForName(AVPlayerItemDidPlayToEndTimeNotification,
+                                             object: nil,
+                                             queue: NSOperationQueue.mainQueue()) { notification in
+                                                 guard let song = notification.object as? AVPlayerItem,
+                                                       let index = self.songs.indexOf(song) else {
+                                                     return
+                                                 }
+
+                                                 let nextIndex = index + 1
+                                                 if nextIndex == self.songs.count {
+                                                     self.handlePlayBackFinishing()
+                                                 } else {
+                                                     self.currentSongIndex = nextIndex
+                                                 }
+                                             }
         runLoop.run()
     }
 
@@ -49,32 +65,42 @@ extension RyCooder {
         if let inputNumber = Int(input) {
             if inputNumber > 0 && inputNumber <= songs.count {
                 jumpToSongAtIndex(inputNumber - 1)
-                player.play()
             }
 
             return
         } else {
             switch input {
             case "s", "start":
-                logStart()
-                player.play()
+                guard player.rate == 0 else {
+                    return
+                }
                 
-            case "n", "next":
-                player.advanceToNextItem()
-                player.play()
+                jumpToSongAtIndex(0)
 
-                currentSongIndex++
+            case "n", "next":
+                var next = currentSongIndex + 1
+                if next == songs.count {
+                    next = 0
+                }
+
+                jumpToSongAtIndex(next)
 
             case "p", "previous":
-                jumpToPreviousSong()
-                player.play()
+                var previous = currentSongIndex - 1
+                if previous < 0 {
+                    previous = songs.count - 1
+                }
 
-                currentSongIndex--
+                jumpToSongAtIndex(previous)
 
             default:
                 print("Unrecognized command \"\(input)\" 😦 .")
             }
         }
+    }
+
+    private func handlePlayBackFinishing() {
+        jumpToSongAtIndex(0)
     }
 
     private func jumpToSongAtIndex(index: Int) {
@@ -88,6 +114,8 @@ extension RyCooder {
         for _ in 0..<index {
             player.advanceToNextItem()
         }
+
+        player.play()
 
         currentSongIndex = index
     }
