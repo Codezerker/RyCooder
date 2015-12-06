@@ -12,8 +12,8 @@ cd RyCooder
 ./install
 ```
 
-### Use pre-compiled binary
-You can download pre-compiled binary [here](https://github.com/Codezerker/RyCooder/releases).
+### Use pre-compiled versions
+You can download pre-compiled binaries [here](https://github.com/Codezerker/RyCooder/releases).
 
 ## How to use RyCooder
 
