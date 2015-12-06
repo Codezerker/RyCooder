@@ -5,13 +5,14 @@ class RyCooder {
 
     private let runLoop = NSRunLoop.currentRunLoop()
     private let stdinHandle = NSFileHandle.fileHandleWithStandardInput()
+    private let musicFiles: [NSURL]
     private let songs: [AVPlayerItem]
     private let player: AVQueuePlayer
 
     private var currentSongIndex = 0
 
     init(pathToStage: String) {
-        let musicFiles = RyCooder.musicFilesInDirectory(pathToStage)
+        musicFiles = RyCooder.musicFilesInDirectory(pathToStage)
         songs = musicFiles.map { musicFileURL -> AVPlayerItem in
             return AVPlayerItem(URL: musicFileURL)
         }
@@ -75,6 +76,7 @@ extension RyCooder {
                     return
                 }
                 
+                print("\n=====> 🎵  RyCooder has taken the stage...")
                 jumpToSongAtIndex(0)
 
             case "n", "next":
@@ -118,6 +120,11 @@ extension RyCooder {
         player.play()
 
         currentSongIndex = index
+
+        guard let fileName = musicFiles[index].lastPathComponent else {
+            return
+        }
+        logStart(fileName)
     }
 
     private func jumpToPreviousSong() {
@@ -129,8 +136,8 @@ extension RyCooder {
         jumpToSongAtIndex(previous)
     }
 
-    private func logStart() {
-        print("\n=====> 🎵  RyCooder has taken the stage...")
+    private func logStart(nameOfSong: String) {
+        print("\n=====> Now playing: \(nameOfSong)")
     }
 
     private func logInputTips() {
