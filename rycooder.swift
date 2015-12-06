@@ -1,12 +1,14 @@
 import Foundation
 import AVFoundation
 
-struct RyCooder {
+class RyCooder {
 
     private let runLoop = NSRunLoop.currentRunLoop()
     private let stdinHandle = NSFileHandle.fileHandleWithStandardInput()
     private let songs: [AVPlayerItem]
     private let player: AVQueuePlayer
+
+    private var currentSongIndex = 0
 
     init(pathToStage: String) {
         let musicFiles = RyCooder.musicFilesInDirectory(pathToStage)
@@ -53,15 +55,22 @@ extension RyCooder {
             return
         } else {
             switch input {
-            case "start":
+            case "s", "start":
                 logStart()
                 player.play()
+                
             case "n", "next":
                 player.advanceToNextItem()
                 player.play()
+
+                currentSongIndex++
+
             case "p", "previous":
                 jumpToPreviousSong()
                 player.play()
+
+                currentSongIndex--
+
             default:
                 print("Unrecognized command \"\(input)\" 😦 .")
             }
@@ -79,12 +88,17 @@ extension RyCooder {
         for _ in 0..<index {
             player.advanceToNextItem()
         }
+
+        currentSongIndex = index
     }
 
     private func jumpToPreviousSong() {
-        print("")
-        print("Cool Guys Don't Look Back At 💥 Explosions💥 ")    
-        print("Jump to previous song has not been implemented yet.")
+        guard currentSongIndex - 1 >= 0 else {
+            return
+        }
+
+        let previous = currentSongIndex - 1
+        jumpToSongAtIndex(previous)
     }
 
     private func logStart() {
@@ -92,8 +106,8 @@ extension RyCooder {
     }
 
     private func logInputTips() {
-        print("\nType \"(n)ext\" or \"(p)revious\" to change song.")
-        print("Type index number to play that song.")
+        print("\nType \"(n)ext\" or \"(p)revious\" to change a song.")
+        print("Type index to select a song.")
     }
 
 }
@@ -135,7 +149,7 @@ extension RyCooder {
             }
             print("#\(index + 1) -  \(fileName)")
         }
-        print("\n===== Type \"start\" to begin.")
+        print("\n===== Type \"(s)tart\" to begin.")
     }
 
 }
