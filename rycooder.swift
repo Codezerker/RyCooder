@@ -42,6 +42,9 @@ class RyCooder {
                                                      self.handlePlayBackFinishing()
                                                  } else {
                                                      self.currentSongIndex = nextIndex
+                                                     if let fileName = self.musicFiles[nextIndex].lastPathComponent {
+                                                         self.logStart(fileName)
+                                                     }
                                                  }
                                              }
         runLoop.run()
