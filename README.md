@@ -1,12 +1,17 @@
 # RyCooder
 Simple command line music player written in Swift.
 
+## Deployment Target
+
+RyCooder supports __OS X 10.7 and Later__
+
 ## How to install RyCooder
 
 If you have __Xcode 7.0 or above__ installed, and you are using the Xcode version of Swift 2.x, you can build RyCooder yourself. 
 If not, you can download a pre-compiled binary.
 
 ### Build RyCooder yourself
+
 ```
 git clone git@github.com:Codezerker/RyCooder.git
 cd RyCooder
@@ -14,6 +19,7 @@ cd RyCooder
 ```
 
 ### Use pre-compiled versions
+
 You can download pre-compiled binaries [here](https://github.com/Codezerker/RyCooder/releases).
 
 ## How to use RyCooder
@@ -25,12 +31,13 @@ cd /Path/To/Music/Files
 rycooder
 ```
 
-When you run `rycooder` in a folder, it will add all the music files founded in the current folder and all its subfolders to the playing queue. RyCooder regards only `.mp3` and `.m4a` files as _music files_ currently.
+When you run `rycooder` in a folder, it will add all the music files founded in the current folder and all its subfolders to the playing queue. 
+
+RyCooder regards only `.mp3` and `.m4a` files as _music files_ currently.
 
 ## TODO
 
-- Parse iTunes Library
+- Parse iTunes music library
 - Support more audio formats
-- Remove the dependency of `AVFoundation.framework`
 - Use the latest open source Swift toolchain
 
