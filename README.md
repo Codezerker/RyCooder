@@ -1,6 +1,8 @@
 # RyCooder
 Simple command line music player written in Swift.
 
+![](./assets/demo.gif)
+
 ## Deployment Target
 
 RyCooder supports __OS X 10.7 and Later__
