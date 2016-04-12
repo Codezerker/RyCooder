@@ -5,7 +5,7 @@ Simple command line music player written in Swift.
 
 ## Deployment Target
 
-RyCooder supports __OS X 10.7 and Later__
+RyCooder supports __OS X 10.9 and Later__
 
 ## How to install RyCooder
 
