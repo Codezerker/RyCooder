@@ -197,6 +197,7 @@ extension NSURL {
   private struct MusicFileExtensions {
     static let mp3 = "mp3"
     static let m4a = "m4a"
+    static let m4p = "m4p"
   }
 
   var musicFile: Bool {
@@ -205,7 +206,7 @@ extension NSURL {
     }
 
     switch pathExtension {
-    case MusicFileExtensions.mp3, MusicFileExtensions.m4a:
+    case MusicFileExtensions.mp3, MusicFileExtensions.m4a, MusicFileExtensions.m4p:
       return true
     default:
       return false
