@@ -10,6 +10,7 @@ class RyCooder {
   private let player: AVQueuePlayer
 
   private var currentSongIndex = 0
+  private var enablesRandom = false
 
   init(pathToStage: String) {
     musicFiles = RyCooder.musicFilesInDirectory(pathToStage)
@@ -37,7 +38,7 @@ class RyCooder {
         return
       }
 
-      let nextIndex = index + 1
+      let nextIndex = self.nextOf(index)
       if nextIndex == self.songs.count {
         self.handlePlayBackFinishing()
       } else {
@@ -83,7 +84,7 @@ extension RyCooder {
         jumpToSongAtIndex(0)
 
       case "n", "next":
-        var next = currentSongIndex + 1
+        var next = nextOf(currentSongIndex)
         if next == songs.count {
           next = 0
         }
@@ -98,9 +99,21 @@ extension RyCooder {
 
         jumpToSongAtIndex(previous)
 
+      case "r", "random":
+       enablesRandom = !enablesRandom 
+       print("\n=====> 🎭  Random: \(enablesRandom ? "ON" : "OFF")")
+
       default:
         print("Unrecognized command \"\(input)\" 😦 .")
       }
+    }
+  }
+
+  private func nextOf(index: Int) -> Int {
+    if enablesRandom {
+      return Int(arc4random_uniform(UInt32(songs.count)))
+    } else {
+      return index + 1
     }
   }
 
@@ -146,6 +159,7 @@ extension RyCooder {
   private func logInputTips() {
     print("\nType \"(n)ext\" or \"(p)revious\" to change a song.")
     print("Type index to select a song.")
+    print("Type \"random\" to toggle random mode.")
   }
 
 }
