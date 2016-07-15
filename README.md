@@ -35,7 +35,7 @@ rycooder
 
 When you run `rycooder` in a folder, it will add all the music files founded in the current folder and all its subfolders to the playing queue. 
 
-RyCooder regards only `.mp3` and `.m4a` files as _music files_ currently.
+RyCooder regards only `.mp3`, `.m4a` and `.m4p` files as _music files_ currently.
 
 ## TODO
 
