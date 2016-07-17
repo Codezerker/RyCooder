@@ -2,7 +2,7 @@ import Foundation
 
 internal protocol EventHandling {
   
-  func handle(event: EventLoop.Event)
+  func handle(event: EventLoop.Event?)
 }
 
 internal class EventLoop: NSObject {
@@ -27,11 +27,14 @@ internal class EventLoop: NSObject {
       "shuffle"  : .toggleShuffle,
     ] 
 
-    private static func event(withInput input: String) -> Event? {
+    private init?(withInput input: String) {
       if let index = Int(input) {
-        return .jumpToItem(index: index - 1)
+        self = .jumpToItem(index: index - 1)
       } else {
-        return inputMap[input] 
+        guard let value = Event.inputMap[input] else {
+          return nil
+        }
+        self = value
       }
     }
   }
@@ -42,6 +45,23 @@ internal class EventLoop: NSObject {
 
   internal func start(withHandler handler: EventHandling) {
     self.handler = handler
+    readFromStandardInputAndWait()
+    NotificationCenter.default().addObserver(forName: .NSFileHandleDataAvailable, object: nil, queue: OperationQueue.main()) { [weak self] _ in
+      self?.readFromStandardInputAndWait()  
+    }
+    runLoop.run()
+  }
+
+  @objc private func readFromStandardInputAndWait() {
+    defer {
+      standardInputFileHandle.waitForDataInBackgroundAndNotify()
+    }
+
+    guard let input = NSString(data: standardInputFileHandle.availableData, encoding: String.Encoding.utf8.rawValue)?.replacingOccurrences(of: "\n", with: "") else {
+      return
+    }
+    let event = Event(withInput: input)
+    handler?.handle(event: event)
   }
 }
 

@@ -29,7 +29,7 @@ public struct Player {
 
 extension Player: EventHandling {
 
-  func handle(event: EventLoop.Event) {
+  func handle(event: EventLoop.Event?) {
     print(event)
   }
 }
