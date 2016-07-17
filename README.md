@@ -1,7 +1,7 @@
 # RyCooder
 Simple command line music player written in Swift.
 
-![](./Asset/demo.gif)
+![](./Assets/demo.gif)
 
 ## Requirements
 
