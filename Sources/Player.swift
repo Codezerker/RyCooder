@@ -39,6 +39,7 @@ extension Player: EventHandling {
       guard player.rate == 0 else {
         return
       }
+      logger.playerDidStartPlayBack()
       jump(toIndex: 0)   
     case .playNext:
       guard let currentIndex = status.currentIndex else {

@@ -40,6 +40,13 @@ internal struct UnknownCommandView: Displayable {
 }
 
 internal struct StartPlayingView: Displayable {
+  
+  internal func display() {
+    print("\n=====> 🎵  RyCooder has taken the stage...")
+  }
+}
+
+internal struct ItemPlayingView: Displayable {
 
   private let item: AVPlayerItem
 

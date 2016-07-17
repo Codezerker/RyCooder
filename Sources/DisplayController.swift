@@ -5,6 +5,7 @@ internal protocol PlayerDisplayController {
   
   func playerDidFinishLoading(audioFiles: [URL])
   func playerDidEncounterUnknownCommand(_ command: String)
+  func playerDidStartPlayBack()
   func playerDidStartPlayingItem(_ item: AVPlayerItem)
 }
 
@@ -19,8 +20,12 @@ internal struct PlayerLogger: PlayerDisplayController {
     UnknownCommandView().display()
   }
 
+  internal func playerDidStartPlayBack() {
+    StartPlayingView().display()
+  }
+
   internal func playerDidStartPlayingItem(_ item: AVPlayerItem) {
-    StartPlayingView(item: item).display()
+    ItemPlayingView(item: item).display()
   }
 }
 
