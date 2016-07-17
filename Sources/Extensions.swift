@@ -2,7 +2,7 @@ import Foundation
 
 internal extension FileManager {
   
-  internal func filteredMusicFileURLs(inDirectory directory: String) -> [NSURL] {
+  internal func filteredMusicFileURLs(inDirectory directory: String) -> [URL] {
     guard let dir = URL(string: directory),
           let enumerator = enumerator(at: dir, includingPropertiesForKeys: nil, options: [], errorHandler: nil) else {
       return []

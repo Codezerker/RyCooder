@@ -1,11 +1,11 @@
-.PHONY: run
-.PHONY: install
-
 run:
 	swift build
-	.build/debug/RyCooder
+	lldb .build/debug/RyCooder
 
 install:
 	swift build
 	cp .build/debug/RyCooder /usr/local/bin/rycooder
+
+clean:
+	rm -rf .build/
 

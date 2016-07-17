@@ -3,9 +3,8 @@ import Foundation
 
 public struct Player {
   
-  //private let musicFileURLs: [NSURL]
-  //private let player: AVQueuePlayer
-  //private let playerItems: [AVPlayerItem]
+  private let player: AVQueuePlayer
+  private let playerItems: [AVPlayerItem]
 
   private struct Status {
     var shuffle = false
@@ -14,7 +13,10 @@ public struct Player {
   private var status = Status()
 
   public init(path: String) {
-
+    playerItems = FileManager.default()
+      .filteredMusicFileURLs(inDirectory: path)
+      .map { AVPlayerItem(url: $0) }
+    player = AVQueuePlayer(items: playerItems)
   }
 
   public func start() {
