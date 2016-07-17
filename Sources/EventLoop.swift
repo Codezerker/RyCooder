@@ -1,4 +1,5 @@
 import Foundation
+import AVFoundation
 
 internal protocol EventHandling {
   
@@ -13,6 +14,7 @@ internal class EventLoop: NSObject {
     case playPrevious
     case toggleShuffle
     case jumpToItem(index: Int)
+    case itemFinishedPlaying(item: AVPlayerItem)
 
     private static let inputMap: [String : Event] = [
       "s"        : .start,
@@ -49,8 +51,14 @@ internal class EventLoop: NSObject {
     NotificationCenter.default().addObserver(forName: .NSFileHandleDataAvailable, object: nil, queue: OperationQueue.main()) { [weak self] _ in
       self?.readFromStandardInputAndWait()  
     }
+    NotificationCenter.default().addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: nil, queue: OperationQueue.main()) { [weak self] notification in
+      self?.playerItemDidFinishPlaying(notification)
+    }
     runLoop.run()
   }
+}
+
+extension EventLoop {
 
   @objc private func readFromStandardInputAndWait() {
     defer {
@@ -63,5 +71,13 @@ internal class EventLoop: NSObject {
     let event = Event(withInput: input)
     handler?.handle(event: event)
   }
+
+  @objc private func playerItemDidFinishPlaying(_ notification: NSNotification) {
+    guard let item = notification.object as? AVPlayerItem else {
+      return
+    }
+    handler?.handle(event: .itemFinishedPlaying(item: item))
+  }
 }
+
 
