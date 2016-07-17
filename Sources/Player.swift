@@ -8,11 +8,11 @@ public struct Player {
   private let player: AVQueuePlayer
   private let items: [AVPlayerItem]
 
-  private struct Status {
+  private class Status {
     var shuffledItems: [AVPlayerItem]? = nil
     var currentIndex: Int? = nil
   }
-  private var status = Status()
+  private let status = Status()
 
   public init(path: String) {
     let audioFiles = FileManager.default().filteredMusicFileURLs(inDirectory: path)
@@ -40,21 +40,25 @@ extension Player: EventHandling {
         return
       }
       jump(toIndex: 0)   
-    
     case .playNext:
-      break
-
+      guard let currentIndex = status.currentIndex else {
+        return
+      }
+      jump(toIndex: currentIndex + 1)
     case .playPrevious:
-      break
-
+      guard let currentIndex = status.currentIndex else {
+        return
+      }
+      jump(toIndex: currentIndex - 1)
     case .toggleShuffle:
-      break
-
+      break // FIXME: unimplemented
     case .jumpToItem(let index):
-      break
-
+      jump(toIndex: index)
     case .itemFinishedPlaying(let item):
-      break
+      guard let index = itemsForPlay.index(of: item) else {
+        return
+      }
+      jump(toIndex: index + 1)
     }
   }
 }
@@ -62,11 +66,20 @@ extension Player: EventHandling {
 private extension Player {
   
   private func jump(toIndex index: Int) {
+    var indexForPlay = index
+    if indexForPlay < 0 {
+      indexForPlay = itemsForPlay.count - 1
+    }
+    if indexForPlay >= itemsForPlay.count {
+      indexForPlay = 0
+    }
+
     refill()
-    for _ in 0..<index {
+    for _ in 0..<indexForPlay {
       player.advanceToNextItem()
     }
     player.play()
+    status.currentIndex = indexForPlay
     if let currentItem = player.currentItem {
       logger.playerDidStartPlayingItem(currentItem)
     }
