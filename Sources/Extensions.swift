@@ -15,10 +15,8 @@ internal extension FileManager {
       }
       if fileURL.isMusicFile {
         musicFiles.append(fileURL)
-        return true 
-      } else {
-        return true
       }
+      return true
     }
     while enumeration() {}
     return musicFiles
