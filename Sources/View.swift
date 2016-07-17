@@ -43,10 +43,7 @@ internal struct StartPlayingView: Displayable {
 
   private let item: AVPlayerItem
 
-  internal init?(item: AVPlayerItem?) {
-    guard let item = item else {
-      return nil
-    }
+  internal init(item: AVPlayerItem) {
     self.item = item
   }
 

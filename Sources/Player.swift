@@ -30,7 +30,7 @@ extension Player: EventHandling {
 
   func handle(event: EventLoop.Event?) {
     guard let event = event else {
-      UnknownCommandView().display()
+      logger.playerDidEncounterUnknownCommand("")
       return
     }
     
@@ -67,7 +67,9 @@ private extension Player {
       player.advanceToNextItem()
     }
     player.play()
-    StartPlayingView(item: player.currentItem)?.display()
+    if let currentItem = player.currentItem {
+      logger.playerDidStartPlayingItem(currentItem)
+    }
   }
 
   private func refill() {
