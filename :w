@@ -1,0 +1,18 @@
+import Foundation
+
+internal protocol EventHandling {
+  
+  func handle(event: Event)
+}
+
+internal class EventLoop: NSObject {
+
+  internal init(handler: EventHandling) {
+    super.init()
+  }
+
+  internal func start() {
+    // FIXME
+  }
+}
+
