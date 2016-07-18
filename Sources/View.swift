@@ -15,39 +15,40 @@ internal struct AudioFileLoadingView: Displayable {
   }
   
   internal func display() {
-    print("🎵  Audio Files added to playlist:")
+    print("\(String.arrow) 🎵  files added to playlist:")
     for (index, audioFile) in audioFiles.enumerated() {
       guard let filename = audioFile.lastPathComponent else {
         continue
       }
-      print("#\(index + 1) - \(filename)")
+      let indexString = "#\(index + 1)".underlined
+      print("\(indexString) - \(filename)")
     }
+    print("")
   }
 }
 
 internal struct StartingView: Displayable {
   
   internal func display() {
-    print("\n")
-    print("===== Type \"(s)tart\" to start playing.")
-    print("===== Type \"(n)ext\" or \"(p)revious\" to change songs.")
-    print("===== Type song index to jump to a song.")
-    print("===== Type \"shuffle\" to toggle shuffling.")
-    print("\n")
+    print("\(String.arrow) Type \("start".highlighted) to start playing.")
+    print("\(String.arrow) Type \("next".highlighted) or \("previous".highlighted) to change songs.")
+    print("\(String.arrow) Type \("index of a song".underlined) to jump to the song.")
+    print("\(String.arrow) Type \("shuffle".highlighted) to toggle shuffling.")
+    print("")
   }
 }
 
 internal struct UnknownCommandView: Displayable {
  
   internal func display() {
-    print("Unrecognized command 😦 .")
+    print("\(String.arrow) Unrecognized command 😦 .")
   }
 }
 
 internal struct StartPlayingView: Displayable {
   
   internal func display() {
-    print("=====> 🎵  RyCooder has taken the stage...")
+    print("\(String.arrow) 🎵  RyCooder has taken the stage...")
   }
 }
 
@@ -64,7 +65,7 @@ internal struct ItemPlayingView: Displayable {
           let filename = asset.url.lastPathComponent else {
       return
     }
-    print("\n=====> Now playing: \(filename)")
+    print("\n\(String.arrow) Now playing: \(filename.tinted)")
   }
 }
 
@@ -77,7 +78,7 @@ internal struct ShuffleView: Displayable {
   }
 
   internal func display() {
-    print("=====> 🎭  Shuffle turned \(shuffle ? "ON" : "OFF").")
+    print("\(String.arrow) 🎭  Shuffle turned \(shuffle ? "ON".turnedOn : "OFF".turnedOff).")
   }
 }
 
