@@ -29,13 +29,16 @@ internal struct StartingView: Displayable {
   
   internal func display() {
     print("\n===== Type \"(s)tart\" to start playing.")
+    print("===== Type \"(n)ext\" or \"(p)revious\" to change a song.")
+    print("===== Type index to select a song.")
+    print("===== Type \"shuffle\" to toggle song shuffling.")
   }
 }
 
 internal struct UnknownCommandView: Displayable {
  
   internal func display() {
-    print("Unrecognized command 😦 .")
+    print("\nUnrecognized command 😦 .")
   }
 }
 
@@ -60,6 +63,19 @@ internal struct ItemPlayingView: Displayable {
       return
     }
     print("\n=====> Now playing: \(filename)")
+  }
+}
+
+internal struct ShuffleView: Displayable {
+
+  private let shuffle: Bool
+
+  internal init(shuffle: Bool) {
+    self.shuffle = shuffle
+  }
+
+  internal func display() {
+    print("\n 🎭 shuffle: \(shuffle ? "ON" : "OFF")")
   }
 }
 

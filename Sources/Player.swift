@@ -1,5 +1,6 @@
 import AVFoundation
 import Foundation
+import FisherYates
 
 public struct Player {
 
@@ -52,7 +53,13 @@ extension Player: EventHandling {
       }
       jump(toIndex: currentIndex - 1)
     case .toggleShuffle:
-      break // FIXME: unimplemented
+      if status.shuffledItems != nil {
+        status.shuffledItems = nil
+        logger.playerDidToggleShuffle(shuffle: false)
+      } else {
+        status.shuffledItems = items.shuffled()
+        logger.playerDidToggleShuffle(shuffle: true)
+      }
     case .jumpToItem(let index):
       jump(toIndex: index)
     case .itemFinishedPlaying(let item):

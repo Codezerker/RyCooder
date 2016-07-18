@@ -7,6 +7,7 @@ internal protocol PlayerDisplayController {
   func playerDidEncounterUnknownCommand(_ command: String)
   func playerDidStartPlayBack()
   func playerDidStartPlayingItem(_ item: AVPlayerItem)
+  func playerDidToggleShuffle(shuffle: Bool)
 }
 
 internal struct PlayerLogger: PlayerDisplayController {
@@ -26,6 +27,10 @@ internal struct PlayerLogger: PlayerDisplayController {
 
   internal func playerDidStartPlayingItem(_ item: AVPlayerItem) {
     ItemPlayingView(item: item).display()
+  }
+
+  internal func playerDidToggleShuffle(shuffle: Bool) {
+    ShuffleView(shuffle: shuffle).display()
   }
 }
 
