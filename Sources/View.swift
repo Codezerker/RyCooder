@@ -28,24 +28,26 @@ internal struct AudioFileLoadingView: Displayable {
 internal struct StartingView: Displayable {
   
   internal func display() {
-    print("\n===== Type \"(s)tart\" to start playing.")
-    print("===== Type \"(n)ext\" or \"(p)revious\" to change a song.")
-    print("===== Type index to select a song.")
-    print("===== Type \"shuffle\" to toggle song shuffling.")
+    print("\n")
+    print("===== Type \"(s)tart\" to start playing.")
+    print("===== Type \"(n)ext\" or \"(p)revious\" to change songs.")
+    print("===== Type song index to jump to a song.")
+    print("===== Type \"shuffle\" to toggle shuffling.")
+    print("\n")
   }
 }
 
 internal struct UnknownCommandView: Displayable {
  
   internal func display() {
-    print("\nUnrecognized command 😦 .")
+    print("Unrecognized command 😦 .")
   }
 }
 
 internal struct StartPlayingView: Displayable {
   
   internal func display() {
-    print("\n=====> 🎵  RyCooder has taken the stage...")
+    print("=====> 🎵  RyCooder has taken the stage...")
   }
 }
 
@@ -75,7 +77,7 @@ internal struct ShuffleView: Displayable {
   }
 
   internal func display() {
-    print("\n 🎭 shuffle: \(shuffle ? "ON" : "OFF")")
+    print("=====> 🎭  Shuffle turned \(shuffle ? "ON" : "OFF").")
   }
 }
 
