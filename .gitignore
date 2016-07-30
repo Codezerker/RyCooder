@@ -95,4 +95,5 @@ Temporary Items
 ## Swift Package Manager
 .build
 Packages 
+.Package.toml
 
