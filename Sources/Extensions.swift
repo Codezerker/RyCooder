@@ -32,9 +32,6 @@ internal extension URL {
   }
 
   internal var isMusicFile: Bool {
-    guard let pathExtension = pathExtension else {
-      return false
-    }
     return MusicFileExtension(rawValue: pathExtension) != nil
   }
 }

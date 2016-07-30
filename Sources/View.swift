@@ -17,9 +17,7 @@ internal struct AudioFileLoadingView: Displayable {
   internal func display() {
     print("\(String.arrow) 🎵  files added to playlist:")
     for (index, audioFile) in audioFiles.enumerated() {
-      guard let filename = audioFile.lastPathComponent else {
-        continue
-      }
+      let filename = audioFile.lastPathComponent
       let indexString = "#\(index + 1)".underlined
       print("\(indexString) - \(filename)")
     }
@@ -61,10 +59,10 @@ internal struct ItemPlayingView: Displayable {
   }
 
   internal func display() {
-    guard let asset = item.asset as? AVURLAsset,
-          let filename = asset.url.lastPathComponent else {
+    guard let asset = item.asset as? AVURLAsset else{
       return
     }
+    let filename = asset.url.lastPathComponent
     print("\n\(String.arrow) Now playing: \(filename.tinted)")
   }
 }

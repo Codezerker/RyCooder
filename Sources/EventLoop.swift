@@ -29,7 +29,7 @@ internal class EventLoop: NSObject {
       "shuffle"  : .toggleShuffle,
     ] 
 
-    private init?(withInput input: String) {
+    fileprivate init?(withInput input: String) {
       if let index = Int(input) {
         self = .jumpToItem(index: index - 1)
       } else {
@@ -41,17 +41,17 @@ internal class EventLoop: NSObject {
     }
   }
 
-  private var handler: EventHandling?
-  private let runLoop = RunLoop.current()
-  private let standardInputFileHandle = FileHandle.standardInput()
+  private let runLoop = RunLoop.current
+  fileprivate var handler: EventHandling?
+  fileprivate let standardInputFileHandle = FileHandle.standardInput
 
   internal func start(withHandler handler: EventHandling) {
     self.handler = handler
     readFromStandardInputAndWait()
-    NotificationCenter.default().addObserver(forName: .NSFileHandleDataAvailable, object: nil, queue: OperationQueue.main()) { [weak self] _ in
+    NotificationCenter.default.addObserver(forName: .NSFileHandleDataAvailable, object: nil, queue: OperationQueue.main) { [weak self] _ in
       self?.readFromStandardInputAndWait()  
     }
-    NotificationCenter.default().addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: nil, queue: OperationQueue.main()) { [weak self] notification in
+    NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: nil, queue: OperationQueue.main) { [weak self] notification in
       self?.playerItemDidFinishPlaying(notification)
     }
     runLoop.run()
@@ -60,7 +60,7 @@ internal class EventLoop: NSObject {
 
 extension EventLoop {
 
-  @objc private func readFromStandardInputAndWait() {
+  @objc fileprivate func readFromStandardInputAndWait() {
     defer {
       standardInputFileHandle.waitForDataInBackgroundAndNotify()
     }
@@ -72,7 +72,7 @@ extension EventLoop {
     handler?.handle(event: event)
   }
 
-  @objc private func playerItemDidFinishPlaying(_ notification: NSNotification) {
+  @objc fileprivate func playerItemDidFinishPlaying(_ notification: Notification) {
     guard let item = notification.object as? AVPlayerItem else {
       return
     }

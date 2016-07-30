@@ -4,19 +4,19 @@ import FisherYates
 
 public struct Player {
 
-  private let eventLoop = EventLoop()
-  private let logger = PlayerLogger()
-  private let player: AVQueuePlayer
-  private let items: [AVPlayerItem]
+  fileprivate let eventLoop = EventLoop()
+  fileprivate let logger = PlayerLogger()
+  fileprivate let player: AVQueuePlayer
+  fileprivate let items: [AVPlayerItem]
 
-  private class Status {
+  fileprivate class Status {
     var shuffledItems: [AVPlayerItem]? = nil
     var currentIndex: Int? = nil
   }
-  private let status = Status()
+  fileprivate let status = Status()
 
   public init(path: String) {
-    let audioFiles = FileManager.default().filteredMusicFileURLs(inDirectory: path)
+    let audioFiles = FileManager.default.filteredMusicFileURLs(inDirectory: path)
     items = audioFiles.map { AVPlayerItem(url: $0) }
     player = AVQueuePlayer(items: items)
     logger.playerDidFinishLoading(audioFiles: audioFiles)
@@ -71,9 +71,9 @@ extension Player: EventHandling {
   }
 }
 
-private extension Player {
+fileprivate extension Player {
   
-  private func jump(toIndex index: Int) {
+  fileprivate func jump(toIndex index: Int) {
     var indexForPlay = index
     if indexForPlay < 0 {
       indexForPlay = itemsForPlay.count - 1
@@ -102,7 +102,7 @@ private extension Player {
     }
   }
 
-  private var itemsForPlay: [AVPlayerItem] {
+  fileprivate var itemsForPlay: [AVPlayerItem] {
     if let shuffledItems = status.shuffledItems {
       return shuffledItems
     } else {
