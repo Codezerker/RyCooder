@@ -1,6 +1,5 @@
 import AVFoundation
 import Foundation
-import FisherYates
 
 public struct Player {
 
