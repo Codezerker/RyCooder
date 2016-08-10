@@ -6,7 +6,7 @@ Simple command line music player written in Swift.
 ## Requirements
 
 - macOS 10.11.5 (El Capitan)
-- `swift-DEVELOPMENT-SNAPSHOT-2016-07-29-a`
+- Latest Trunk Development from Swift.org
 
 See: https://swift.org/download/#using-downloads
 
