@@ -33,14 +33,14 @@ extension Player: EventHandling {
       logger.playerDidEncounterUnknownCommand("")
       return
     }
-    
+
     switch event {
     case .start:
       guard player.rate == 0 else {
         return
       }
       logger.playerDidStartPlayBack()
-      jump(toIndex: 0)   
+      jump(toIndex: 0)
     case .playNext:
       guard let currentIndex = status.currentIndex else {
         return
@@ -71,7 +71,7 @@ extension Player: EventHandling {
 }
 
 fileprivate extension Player {
-  
+
   fileprivate func jump(toIndex index: Int) {
     var indexForPlay = index
     if indexForPlay < 0 {

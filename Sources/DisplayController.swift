@@ -2,7 +2,7 @@ import Foundation
 import AVFoundation
 
 internal protocol PlayerDisplayController {
-  
+
   func playerDidFinishLoading(audioFiles: [URL])
   func playerDidEncounterUnknownCommand(_ command: String)
   func playerDidStartPlayBack()
@@ -11,7 +11,7 @@ internal protocol PlayerDisplayController {
 }
 
 internal struct PlayerLogger: PlayerDisplayController {
-  
+
   internal func playerDidFinishLoading(audioFiles: [URL]) {
     AudioFileLoadingView(audioFiles: audioFiles).display()
     StartingView().display()

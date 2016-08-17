@@ -2,7 +2,7 @@ import Foundation
 import AVFoundation
 
 internal protocol EventHandling {
-  
+
   func handle(event: EventLoop.Event?)
 }
 
@@ -27,7 +27,7 @@ internal class EventLoop: NSObject {
       "previous" : .playPrevious,
 
       "shuffle"  : .toggleShuffle,
-    ] 
+    ]
 
     fileprivate init?(withInput input: String) {
       if let index = Int(input) {
@@ -49,7 +49,7 @@ internal class EventLoop: NSObject {
     self.handler = handler
     readFromStandardInputAndWait()
     NotificationCenter.default.addObserver(forName: .NSFileHandleDataAvailable, object: nil, queue: OperationQueue.main) { [weak self] _ in
-      self?.readFromStandardInputAndWait()  
+      self?.readFromStandardInputAndWait()
     }
     NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: nil, queue: OperationQueue.main) { [weak self] notification in
       self?.playerItemDidFinishPlaying(notification)

@@ -2,7 +2,7 @@ import Foundation
 import Leonid
 
 internal extension FileManager {
-  
+
   internal func filteredMusicFileURLs(inDirectory directory: String) -> [URL] {
     guard let enumerator = enumerator(at: URL(fileURLWithPath: directory), includingPropertiesForKeys: nil, options: [], errorHandler: nil) else {
       return []

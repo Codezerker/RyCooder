@@ -2,18 +2,18 @@ import Foundation
 import AVFoundation
 
 internal protocol Displayable {
-  
+
   func display()
 }
 
 internal struct AudioFileLoadingView: Displayable {
-  
+
   private let audioFiles: [URL]
 
   internal init(audioFiles: [URL]) {
     self.audioFiles = audioFiles
   }
-  
+
   internal func display() {
     print("\(String.arrow) 🎵  files added to playlist:")
     for (index, audioFile) in audioFiles.enumerated() {
@@ -26,7 +26,7 @@ internal struct AudioFileLoadingView: Displayable {
 }
 
 internal struct StartingView: Displayable {
-  
+
   internal func display() {
     print("\(String.arrow) Type \("start".highlighted) to start playing.")
     print("\(String.arrow) Type \("next".highlighted) or \("previous".highlighted) to change songs.")
@@ -37,14 +37,14 @@ internal struct StartingView: Displayable {
 }
 
 internal struct UnknownCommandView: Displayable {
- 
+
   internal func display() {
     print("\(String.arrow) Unrecognized command 😦 .")
   }
 }
 
 internal struct StartPlayingView: Displayable {
-  
+
   internal func display() {
     print("\(String.arrow) 🎵  RyCooder has taken the stage...")
   }
