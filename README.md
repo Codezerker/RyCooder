@@ -5,10 +5,7 @@ Simple command line music player written in Swift.
 
 ## Requirements
 
-- macOS 10.11.5 (El Capitan)
-- Latest Trunk Development from Swift.org
-
-See: https://swift.org/download/#using-downloads
+- Swift 3.0
 
 ## How to install RyCooder
 
