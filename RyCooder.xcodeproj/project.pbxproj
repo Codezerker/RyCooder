@@ -1,0 +1,291 @@
+// !$*UTF8*$!
+{
+    archiveVersion = 1;
+    classes = {};
+    objectVersion = 46;
+    rootObject = __RootObject_;
+    objects = {
+        __RootObject_ = {
+            isa = PBXProject;
+            attributes = {LastUpgradeCheck = 9999;};
+            buildConfigurationList = ___RootConfs_;
+            compatibilityVersion = 'Xcode 3.2';
+            developmentRegion = English;
+            hasScannedForEncodings = 0;
+            knownRegions = (en);
+            mainGroup = ___RootGroup_;
+            productRefGroup = ____Products_;
+            projectDirPath = '';
+            projectRoot = '';
+            targets = (______Target_Leonid, ______Target_RyCooder);
+        };
+        '__PBXFileRef_Package.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'Package.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Assets' = {
+            isa = PBXFileReference;
+            lastKnownFileType = folder;
+            name = 'Assets';
+            path = 'Assets';
+            sourceTree = '<group>';
+        };
+        ___RootGroup_ = {
+            isa = PBXGroup;
+            children = ('__PBXFileRef_Package.swift', _____Configs_, _____Sources_, '__PBXFileRef_Assets', Dependencies_, _______Tests_, ____Products_);
+            sourceTree = '<group>';
+        };
+        _______Group_Leonid = {
+            isa = PBXGroup;
+            name = 'Leonid';
+            path = 'Packages/Leonid-1.0.1/Sources';
+            sourceTree = '<group>';
+            children = ('__PBXFileRef_Packages/Leonid-1.0.1/Sources/Color.swift', '__PBXFileRef_Packages/Leonid-1.0.1/Sources/StringExtensions.swift', '__PBXFileRef_Packages/Leonid-1.0.1/Sources/TextStyle.swift');
+        };
+        '__PBXFileRef_Packages/Leonid-1.0.1/Sources/Color.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'Color.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/Leonid-1.0.1/Sources/StringExtensions.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'StringExtensions.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Packages/Leonid-1.0.1/Sources/TextStyle.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'TextStyle.swift';
+            sourceTree = '<group>';
+        };
+        ______Target_Leonid = {
+            isa = PBXNativeTarget;
+            buildConfigurationList = _______Confs_Leonid;
+            buildPhases = (CompilePhase_Leonid, ___LinkPhase_Leonid);
+            buildRules = ();
+            dependencies = ();
+            name = 'Leonid';
+            productName = Leonid;
+            productReference = _____Product_Leonid;
+            productType = 'com.apple.product-type.framework';
+        };
+        _____Product_Leonid = {
+            isa = PBXFileReference;
+            explicitFileType = 'wrapper.framework';
+            path = 'Leonid.framework';
+            sourceTree = BUILT_PRODUCTS_DIR;
+        };
+        CompilePhase_Leonid = {
+            isa = PBXSourcesBuildPhase;
+            files = ('__src_cc_ref_Packages/Leonid-1.0.1/Sources/Color.swift', '__src_cc_ref_Packages/Leonid-1.0.1/Sources/StringExtensions.swift', '__src_cc_ref_Packages/Leonid-1.0.1/Sources/TextStyle.swift');
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        '__src_cc_ref_Packages/Leonid-1.0.1/Sources/Color.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/Leonid-1.0.1/Sources/Color.swift';
+        };
+        '__src_cc_ref_Packages/Leonid-1.0.1/Sources/StringExtensions.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/Leonid-1.0.1/Sources/StringExtensions.swift';
+        };
+        '__src_cc_ref_Packages/Leonid-1.0.1/Sources/TextStyle.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Packages/Leonid-1.0.1/Sources/TextStyle.swift';
+        };
+        ___LinkPhase_Leonid = {
+            isa = PBXFrameworksBuildPhase;
+            files = ();
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        _______Confs_Leonid = {
+            isa = XCConfigurationList;
+            buildConfigurations = (___DebugConf_Leonid, _ReleaseConf_Leonid);
+            defaultConfigurationIsVisible = 0;
+            defaultConfigurationName = Debug;
+        };
+        ___DebugConf_Leonid = {
+            isa = XCBuildConfiguration;
+            buildSettings = { SWIFT_VERSION = '3.0'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'RyCooder.xcodeproj/Leonid_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; SWIFT_OPTIMIZATION_LEVEL = '-Onone'; PRODUCT_BUNDLE_IDENTIFIER = 'Leonid'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
+            name = Debug;
+        };
+        _ReleaseConf_Leonid = {
+            isa = XCBuildConfiguration;
+            buildSettings = { SWIFT_VERSION = '3.0'; LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx'; PRODUCT_MODULE_NAME = '$(TARGET_NAME:c99extidentifier)'; ENABLE_TESTABILITY = 'YES'; OTHER_SWIFT_FLAGS = '$(inherited)'; INFOPLIST_FILE = 'RyCooder.xcodeproj/Leonid_Info.plist'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; PRODUCT_BUNDLE_IDENTIFIER = 'Leonid'; PRODUCT_NAME = '$(TARGET_NAME:c99extidentifier)'; OTHER_LDFLAGS = '$(inherited)'; };
+            name = Release;
+        };
+        __Dependency_Leonid = {
+            isa = PBXTargetDependency;
+            target = ______Target_Leonid;
+        };
+        _______Group_RyCooder = {
+            isa = PBXGroup;
+            name = 'RyCooder';
+            path = 'Sources';
+            sourceTree = '<group>';
+            children = ('__PBXFileRef_Sources/DisplayController.swift', '__PBXFileRef_Sources/EventLoop.swift', '__PBXFileRef_Sources/Extensions.swift', '__PBXFileRef_Sources/main.swift', '__PBXFileRef_Sources/Player.swift', '__PBXFileRef_Sources/View.swift');
+        };
+        '__PBXFileRef_Sources/DisplayController.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'DisplayController.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Sources/EventLoop.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'EventLoop.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Sources/Extensions.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'Extensions.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Sources/main.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'main.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Sources/Player.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'Player.swift';
+            sourceTree = '<group>';
+        };
+        '__PBXFileRef_Sources/View.swift' = {
+            isa = PBXFileReference;
+            lastKnownFileType = sourcecode.swift;
+            path = 'View.swift';
+            sourceTree = '<group>';
+        };
+        ______Target_RyCooder = {
+            isa = PBXNativeTarget;
+            buildConfigurationList = _______Confs_RyCooder;
+            buildPhases = (CompilePhase_RyCooder, ___LinkPhase_RyCooder);
+            buildRules = ();
+            dependencies = (__Dependency_Leonid);
+            name = 'RyCooder';
+            productName = RyCooder;
+            productReference = _____Product_RyCooder;
+            productType = 'com.apple.product-type.tool';
+        };
+        _____Product_RyCooder = {
+            isa = PBXFileReference;
+            explicitFileType = 'compiled.mach-o.executable';
+            path = 'RyCooder';
+            sourceTree = BUILT_PRODUCTS_DIR;
+        };
+        CompilePhase_RyCooder = {
+            isa = PBXSourcesBuildPhase;
+            files = ('__src_cc_ref_Sources/DisplayController.swift', '__src_cc_ref_Sources/EventLoop.swift', '__src_cc_ref_Sources/Extensions.swift', '__src_cc_ref_Sources/main.swift', '__src_cc_ref_Sources/Player.swift', '__src_cc_ref_Sources/View.swift');
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        '__src_cc_ref_Sources/DisplayController.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Sources/DisplayController.swift';
+        };
+        '__src_cc_ref_Sources/EventLoop.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Sources/EventLoop.swift';
+        };
+        '__src_cc_ref_Sources/Extensions.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Sources/Extensions.swift';
+        };
+        '__src_cc_ref_Sources/main.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Sources/main.swift';
+        };
+        '__src_cc_ref_Sources/Player.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Sources/Player.swift';
+        };
+        '__src_cc_ref_Sources/View.swift' = {
+            isa = PBXBuildFile;
+            fileRef = '__PBXFileRef_Sources/View.swift';
+        };
+        ___LinkPhase_RyCooder = {
+            isa = PBXFrameworksBuildPhase;
+            files = (_LinkFileRef_Leonid_via_RyCooder);
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+        _LinkFileRef_Leonid_via_RyCooder = {
+            isa = PBXBuildFile;
+            fileRef = _____Product_Leonid;
+        };
+        _______Confs_RyCooder = {
+            isa = XCConfigurationList;
+            buildConfigurations = (___DebugConf_RyCooder, _ReleaseConf_RyCooder);
+            defaultConfigurationIsVisible = 0;
+            defaultConfigurationName = Debug;
+        };
+        ___DebugConf_RyCooder = {
+            isa = XCBuildConfiguration;
+            buildSettings = { LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx @executable_path'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; OTHER_SWIFT_FLAGS = '$(inherited)'; SWIFT_FORCE_STATIC_LINK_STDLIB = 'NO'; SWIFT_FORCE_DYNAMIC_LINK_STDLIB = 'YES'; SWIFT_OPTIMIZATION_LEVEL = '-Onone'; OTHER_LDFLAGS = '$(inherited)'; SWIFT_VERSION = '3.0'; };
+            name = Debug;
+        };
+        _ReleaseConf_RyCooder = {
+            isa = XCBuildConfiguration;
+            buildSettings = { LD_RUNPATH_SEARCH_PATHS = '$(TOOLCHAIN_DIR)/usr/lib/swift/macosx @executable_path'; FRAMEWORK_SEARCH_PATHS = '$(PLATFORM_DIR)/Developer/Library/Frameworks'; OTHER_SWIFT_FLAGS = '$(inherited)'; SWIFT_FORCE_STATIC_LINK_STDLIB = 'NO'; SWIFT_FORCE_DYNAMIC_LINK_STDLIB = 'YES'; OTHER_LDFLAGS = '$(inherited)'; SWIFT_VERSION = '3.0'; };
+            name = Release;
+        };
+        __Dependency_RyCooder = {
+            isa = PBXTargetDependency;
+            target = ______Target_RyCooder;
+        };
+        '__PBXFileRef_RyCooder.xcodeproj/Configs/Project.xcconfig' = {
+            isa = PBXFileReference;
+            lastKnownFileType = text.xcconfig;
+            path = 'RyCooder.xcodeproj/Configs/Project.xcconfig';
+            sourceTree = '<group>';
+        };
+        _____Configs_ = {
+            isa = PBXGroup;
+            children = ('__PBXFileRef_RyCooder.xcodeproj/Configs/Project.xcconfig');
+            name = Configs;
+            sourceTree = '<group>';
+        };
+        _____Sources_ = {
+            isa = PBXGroup;
+            children = (_______Group_Leonid, _______Group_RyCooder);
+            name = Sources;
+            sourceTree = '<group>';
+        };
+        Dependencies_ = {
+            isa = PBXGroup;
+            children = (_______Group_Leonid);
+            name = Dependencies;
+            sourceTree = '<group>';
+        };
+        ____Products_ = {
+            isa = PBXGroup;
+            children = (_____Product_Leonid, _____Product_RyCooder);
+            name = Products;
+            sourceTree = '<group>';
+        };
+        _______Debug_ = {
+            isa = XCBuildConfiguration;
+            baseConfigurationReference = '__PBXFileRef_RyCooder.xcodeproj/Configs/Project.xcconfig';
+            buildSettings = {};
+            name = Debug;
+        };
+        _____Release_ = {
+            isa = XCBuildConfiguration;
+            baseConfigurationReference = '__PBXFileRef_RyCooder.xcodeproj/Configs/Project.xcconfig';
+            buildSettings = {};
+            name = Release;
+        };
+        ___RootConfs_ = {
+            isa = XCConfigurationList;
+            buildConfigurations = (_______Debug_, _____Release_);
+            defaultConfigurationIsVisible = 0;
+            defaultConfigurationName = Debug;
+        };
+    };
+}
