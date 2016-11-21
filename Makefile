@@ -3,7 +3,7 @@ run:
 	lldb .build/debug/RyCooder
 
 install:
-	swift build
+	swift build -c release
 	cp .build/debug/RyCooder /usr/local/bin/rycooder
 
 clean:
