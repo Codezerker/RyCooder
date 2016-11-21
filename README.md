@@ -5,7 +5,7 @@ Simple command line music player written in Swift.
 
 ## Requirements
 
-- Swift 3.0
+- Swift 3
 
 ## How to install RyCooder
 
